@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sum of Integers</title>
+  </head>
+  <body>
+    <h3>Sum of Integers</h3>
+    <input type="number" id="num1" />
+    <input type="number" id="num2" />
+    <button onclick="calculatesum()">Calculate sum</button>
+    <p id="error"></p>
+    <p id="calculateSum" class="result"></p>
+    <script>
+      function calculatesum() {
+        let num1 = document.getElementById("num1").value;
+        let num2 = document.getElementById("num2").value;
+        let error = document.getElementById("error");
+        let result = document.getElementById("calculateSum");
+        error.innerHTML = "";
+        if (num1 === "" || num2 === "") {
+          error.innerHTML = "Please enter both numbers.";
+          result.innerHTML = "";
+          return;
+        }
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+        let sum;
+        if (num1 === num2) {
+          sum = 3 * (num1 + num2);
+        } else {
+          sum = num1 + num2;
+        }
+        result.innerHTML = "Result = " + sum;
+      }
+    </script>
+    <!--question-2  -->
+    <br />
+    <br />
+    <h3>Guess a number between 1 and 10</h3>
+    <input type="number" id="guess-number" />
+    <button onclick="guessNumber()">Guess</button>
+    <p id="guess-result"></p>
+    <script>
+      function guessNumber() {
+        const randomNumber = Math.floor(Math.random() * 10) + 1;
+        const userGuess = parseInt(
+          document.getElementById("guess-number").value
+        );
+        if (userGuess === randomNumber) {
+          document.getElementById("guess-result").innerHTML = "Good Work";
+        } else {
+          document.getElementById("guess-result").innerHTML = "Not matched";
+        }
+      }
+    </script>
+    <!-- qiestion-3 -->
+    <br />
+    <br />
+    <h3>Check if Numbers are between 50 and 99</h3>
+    <input type="number" id="num1-range" />
+    <input type="number" id="num2-range" />
+    <button onclick="checkRange()">Check Range</button>
+    <p id="result-range"></p>
+    <p id="error-range"></p>
+
+    <script>
+      function checkRange() {
+        var num1 = document.getElementById("num1-range").value;
+        var num2 = document.getElementById("num2-range").value;
+        var resultElement = document.getElementById("result-range");
+        var errorElement = document.getElementById("error-range");
+        resultElement.textContent = "";
+        errorElement.textContent = "";
+
+        if (num1 === "" || num2 === "") {
+          errorElement.textContent = "Error: Both fields must be filled out.";
+          return;
+        }
+        num1 = parseInt(num1);
+        num2 = parseInt(num2);
+        if ((num1 >= 50 && num1 <= 99) || (num2 >= 50 && num2 <= 99)) {
+          resultElement.textContent = "True";
+        } else {
+          resultElement.textContent = "False";
+        }
+      }
+    </script>
+
+    <!-- question-4-->
+    <br />
+    <br />
+    <h3>Find Closest Number to 100 (Rounded)</h3>
+    <input type="number" id="num1-closest" />
+    <input type="number" id="num2-closest" />
+    <button onclick="findClosestTo100()">Find Closest</button>
+    <p id="result-closest"></p>
+    <p id="error-closest"></p>
+
+    <script>
+      function findClosestTo100() {
+        var num1 = document.getElementById("num1-closest").value;
+        var num2 = document.getElementById("num2-closest").value;
+        var resultElement = document.getElementById("result-closest");
+        var errorElement = document.getElementById("error-closest");
+
+        resultElement.textContent = "";
+        errorElement.textContent = "";
+
+        if (num1 === "" || num2 === "") {
+          errorElement.textContent = "Error: Both fields must be filled out.";
+          return;
+        }
+
+        num1 = parseFloat(num1);
+        num2 = parseFloat(num2);
+        num1 = Math.round(num1);
+        num2 = Math.round(num2);
+
+        var diff1 = Math.abs(100 - num1);
+        var diff2 = Math.abs(100 - num2);
+
+        if (diff1 < diff2) {
+          resultElement.textContent = "The closest number to 100 is: " + num1;
+        } else if (diff2 < diff1) {
+          resultElement.textContent = "The closest number to 100 is: " + num2;
+        } else {
+          resultElement.textContent = "Both numbers are equally close to 100.";
+        }
+      }
+    </script>
+    <!-- question-4 -->
+    <br />
+    <br />
+    <h3>Add Items to Array</h3>
+    <input type="number" id="itemInput" />
+    <button onclick="addItem()">Add</button>
+    <button onclick="displayItems()">Display</button>
+    <p id="error-array"></p>
+    <p id="output-result"></p>
+
+    <script>
+      let items = [];
+      function addItem() {
+        const itemInput = document.getElementById("itemInput");
+        const error = document.getElementById("error-array");
+        const itemValue = itemInput.value;
+        error.textContent = "";
+
+        if (itemValue) {
+          items.push(itemValue);
+          itemInput.value = "";
+        } else {
+          error.textContent = "Please enter a value.";
+        }
+      }
+
+      function displayItems() {
+        const outputDiv = document.getElementById("output-result");
+        outputDiv.innerHTML = "";
+
+        items.forEach((item, index) => {
+          outputDiv.innerHTML += `Element ${index + 1} = ${item}<br>`;
+        });
+      }
+    </script>
+  </body>
+</html>
